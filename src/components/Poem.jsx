@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import PoemCard from "./PoemCard";
 
 const Poem = () => {
   const [poems, setPoems] = useState([]);
@@ -39,19 +40,27 @@ const Poem = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    authors.map(async (authorName) => {
+      const poem_data = await fetch(
+        `https://poetrydb.org/author/${authorName}`
+      );
+      const poem_details = await poem_data.json();
+      setPoems(poems.concat(poem_details));
+    });
+  }, [authors]);
+
   return (
-    <div>
-      <h1>Poets</h1>
-      <ul>
-        {authors.map((author, index) => (
-          <li key={index}>{author}</li>
-        ))}
-      </ul>
-      {/* <ul>
-        {poems.map((author, index) => (
-          <li key={index}>{author}</li>
-        ))}
-      </ul> */}
+    <div className="h-full snap-y snap-mandatory overflow-y-auto">
+      {poems.map((poem) => {
+        return (
+          <div>
+            <br />
+            <PoemCard poem={poem} />
+            <br />
+          </div>
+        );
+      })}
     </div>
   );
 };
