@@ -6,6 +6,7 @@ import PoemCard from "./PoemCard";
 const Poem = () => {
   const [poems, setPoems] = useState([]);
   const [authors, setAuthors] = useState([]);
+  const [currentAuthor, setCurrentAuthor] = useState("");
 
   const fetchData = async () => {
     try {
@@ -20,17 +21,9 @@ const Poem = () => {
       const data = await response.json();
 
       setAuthors(data.authors);
-      //   console.log("data.authors");
-      //   console.log(data.authors);
-      //   console.log("authors");
-      //   console.log(authors);
-
-      const poem_data = await fetch(
-        "https://poetrydb.org/author/" + `${data.authors[0]}`
+      setCurrentAuthor(
+        data.authors[Math.floor(Math.random() * data.authors.length)]
       );
-      const poem_details = await poem_data.json();
-      setPoems(poem_details);
-      console.log(poem_details);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -51,16 +44,27 @@ const Poem = () => {
   }, [authors]);
 
   return (
-    <div className="h-full snap-y snap-mandatory overflow-y-auto">
-      {poems.map((poem) => {
-        return (
-          <div>
-            <br />
-            <PoemCard poem={poem} />
-            <br />
-          </div>
-        );
-      })}
+    <div className="relative h-screen w-full">
+      <button
+        // onClick={fetchRandomAuthor}
+        // disabled={refreshing}
+        className="fixed top-4 right-4 z-50 flex items-center space-x-2 bg-stone-800 text-stone-50 px-4 py-2 rounded-full shadow-lg hover:bg-stone-700 transition-colors duration-300"
+      >
+        <span>Get Another Poet</span>
+        {/* <RefreshCw className={`h-4 w-4 ${refreshing ? "animate-spin" : ""}`} /> */}
+      </button>
+      <div className="h-screen w-full overflow-y-scroll snap-y snap-mandatory scrollbar-hide no-scrollbar">
+        {poems
+          .filter((poem) => poem.linecount <= 50)
+          .map((poem, index) => (
+            <div
+              key={`${poem.title}-${index}`}
+              className="h-screen w-full flex items-center justify-center snap-start snap-always p-4 no-scrollbar"
+            >
+              <PoemCard poem={poem} />
+            </div>
+          ))}
+      </div>
     </div>
   );
 };
