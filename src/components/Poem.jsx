@@ -2,29 +2,28 @@
 
 import { useEffect, useState } from "react";
 import PoemCard from "./PoemCard";
+import LoadingSpinner from "./LoadingCircle";
 
 const Poem = () => {
   const [poems, setPoems] = useState([]);
   const [authors, setAuthors] = useState([]);
-  const [currentAuthor, setCurrentAuthor] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const fetchData = async () => {
     try {
       const authorUrl = "https://poetrydb.org/authors";
       const baseUrl = "https://poetrydb.org/authors/";
-      console.log("Sending req");
       const response = await fetch(authorUrl);
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-      const data = await response.json();
 
+      const data = await response.json();
       setAuthors(data.authors);
-      setCurrentAuthor(
-        data.authors[Math.floor(Math.random() * data.authors.length)]
-      );
     } catch (error) {
+      setError(error.message);
       console.error("Error fetching data:", error);
     }
   };
@@ -41,7 +40,16 @@ const Poem = () => {
       const poem_details = await poem_data.json();
       setPoems(poems.concat(poem_details));
     });
+    setLoading(false);
   }, [authors]);
+
+  if (loading) {
+    return (
+      <div className="h-screen w-full flex items-center justify-center">
+        <LoadingSpinner />
+      </div>
+    );
+  }
 
   return (
     <div className="relative h-screen w-full">

@@ -64,7 +64,7 @@ const PoemCard = ({ poem }) => {
             ))}
         </div>
 
-        <div className="sticky bottom-0 pt-4 backdrop-blur-sm">
+        <div className="bottom-0 pt-4 backdrop-blur-sm">
           <FavouriteButton />
         </div>
       </div>
