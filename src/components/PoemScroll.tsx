@@ -1,10 +1,7 @@
-"use client";
-
 import { useEffect, useState } from "react";
 import PoemCard from "./PoemCard";
-import LoadingSpinner from "./LoadingCircle";
 
-const Poem = () => {
+const PoemScroll = () => {
   const [poems, setPoems] = useState([]);
   const [authors, setAuthors] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -43,13 +40,13 @@ const Poem = () => {
     setLoading(false);
   }, [authors]);
 
-  if (loading) {
-    return (
-      <div className="h-screen w-full flex items-center justify-center">
-        <LoadingSpinner />
-      </div>
-    );
-  }
+  //   if (loading) {
+  //     return (
+  //       <div className="h-screen w-full flex items-center justify-center">
+  //         <LoadingSpinner />
+  //       </div>
+  //     );
+  //   }
 
   return (
     <div className="relative h-screen w-full">
@@ -63,10 +60,10 @@ const Poem = () => {
       </button>
       <div className="h-screen w-full overflow-y-scroll snap-y snap-mandatory scrollbar-hide no-scrollbar">
         {poems
-          .filter((poem) => poem.linecount <= 50)
+          //   .filter((poem) => poem.linecount <= 50)
           .map((poem, index) => (
             <div
-              key={`${poem.title}-${index}`}
+              //   key={`${poem.title}-${index}`}
               className="h-screen w-full flex items-center justify-center snap-start snap-always p-4 no-scrollbar"
             >
               <PoemCard poem={poem} />
@@ -77,4 +74,4 @@ const Poem = () => {
   );
 };
 
-export default Poem;
+export default PoemScroll;
