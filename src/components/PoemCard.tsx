@@ -48,11 +48,11 @@ const PoemCard: React.FC<PoemProps> = ({ poem }) => {
   }, [] as string[][]);
 
   return (
-    <div className="w-full px-4 sm:px-6 lg:px-8">
+    <div className="w-full flex justify-center items-center px-4">
       <AnimatePresence>
         {isVisible && (
           <motion.div
-            className="relative w-full max-w-3xl mx-auto min-h-[50vh] flex flex-col justify-center px-4 py-6"
+            className="relative w-full sm:max-w-2xl mx-auto min-h-screen sm:min-h-[50vh] flex flex-col justify-center px-4 py-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -77,7 +77,7 @@ const PoemCard: React.FC<PoemProps> = ({ poem }) => {
                 transition={{ duration: 0.2 }}
               />
               <motion.div className="sticky top-0 z-10 p-6 pb-4 bg-white/90 backdrop-blur-md border-b border-stone-200">
-                <h1 className="text-2xl sm:text-3xl font-serif text-stone-800 mb-2 tracking-tight">
+                <h1 className="text-sm sm:text-2xl md:text-3xl lg:text-4xl font-serif text-stone-800 mb-2 tracking-tight">
                   {poem.title}
                 </h1>
                 <p className="text-sm sm:text-base text-stone-600">
