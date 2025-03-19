@@ -11,38 +11,6 @@ interface PoemProps {
   };
 }
 
-const FavoriteButton = () => {
-  const [favorited, setFavorited] = useState(false);
-
-  const handleFavorite = () => {
-    setFavorited(!favorited);
-  };
-
-  return (
-    <motion.button
-      onClick={handleFavorite}
-      className={cn(
-        "flex items-center rounded-full ",
-        "backdrop-blur-sm border text-stone-400",
-        favorited
-          ? "bg-stone-50 border-amber-200"
-          : "bg-white/10 border-stone-200 "
-      )}
-      aria-label={favorited ? "Remove from favorites" : "Add to favorites"}
-      whileTap={{ scale: 0.95 }}
-      whileHover={{ y: -2 }}
-    >
-      <span className="text-sm font-medium">Favorite</span>
-      <Star
-        className={cn(
-          "h-4 w-4 transition-all duration-300 m-0.5",
-          favorited ? "fill-amber-400 text-amber-400" : "text-stone-600"
-        )}
-      />
-    </motion.button>
-  );
-};
-
 const PoemCard: React.FC<PoemProps> = ({ poem }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -88,7 +56,7 @@ const PoemCard: React.FC<PoemProps> = ({ poem }) => {
   }, [] as string[][]);
 
   return (
-    <div>
+    <div className="w-full">
       <AnimatePresence>
         {isVisible && (
           <motion.div
@@ -170,7 +138,7 @@ const PoemCard: React.FC<PoemProps> = ({ poem }) => {
                       {stanza.map((line, lineIndex) => (
                         <p
                           key={lineIndex}
-                          className="font-serif text-stone-700 leading-relaxed text-base sm:text-lg"
+                          className="font-serif text-stone-700 leading-relaxed text-base sm:text-lg text-center"
                         >
                           {line || "\u00A0"}
                         </p>
@@ -181,15 +149,6 @@ const PoemCard: React.FC<PoemProps> = ({ poem }) => {
 
                 <div className="h-16"></div>
               </div>
-
-              <motion.div
-                className="sticky bottom-0 z-10 flex justify-center space-x-3 p-4 bg-white/80 backdrop-blur-md border-t border-stone-100"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.3, delay: 0.6 }}
-              >
-                <FavoriteButton />
-              </motion.div>
 
               <AnimatePresence>
                 {showBackToTop && (
