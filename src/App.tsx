@@ -7,6 +7,7 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
+    <title>Poe.try</title>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Index />} />
