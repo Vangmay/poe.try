@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import PoemCard from "../components/PoemCard";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import PoemScroll from "@/components/PoemScroll";
 

@@ -12,10 +12,10 @@ const PoemScroll = () => {
   const [poems, setPoems] = useState<Poem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [_, setCurrentIndex] = useState(0);
 
   const observer = useRef<IntersectionObserver | null>(null);
-  const poemRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const poemRefs = useRef<Array<HTMLDivElement | null> | null>([]);
 
   const fetchMorePoems = useCallback(async () => {
     setLoading(true);

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Star, ArrowUp } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { ArrowUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface PoemProps {
