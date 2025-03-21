@@ -259,7 +259,7 @@ const PoemScroll = () => {
   }, [poems]);
 
   return (
-    <div className="relative h-screen w-full">
+    <div className="relative h-screen w-full flex flex-col items-center">
       <div className="h-screen w-full overflow-y-scroll snap-y snap-mandatory scrollbar-hide no-scrollbar">
         {poems.map((poem, index) => (
           <div
@@ -271,26 +271,20 @@ const PoemScroll = () => {
           </div>
         ))}
         {loading && (
-          <div className="h-screen w-full flex items-center justify-center">
-            <ul>
-              <p className="mt-4 text-stone-500 text-sm">
-                Spinning wheel of thoughts,
-              </p>
-              <br />
-              <p className="mt-4 text-stone-500 text-sm">
-                words wait in the silent void,
-              </p>
-              <br />
-
-              <p className="mt-4 text-stone-500 text-sm">
-                verse arrives at last.
-              </p>
+          <div className="h-screen w-full flex flex-col items-center justify-center text-center p-4">
+            <p className="text-stone-500 text-lg font-semibold">
+              Loading poems...
+            </p>
+            <ul className="mt-4 text-stone-400 text-sm">
+              <li>Spinning wheel of thoughts,</li>
+              <li>Words wait in the silent void,</li>
+              <li>Verse arrives at last.</li>
             </ul>
           </div>
         )}
         {error && (
           <div className="h-screen w-full flex items-center justify-center">
-            <div className="text-xl text-red-600">{error}</div>
+            <p className="text-xl text-red-600">{error}</p>
           </div>
         )}
       </div>
