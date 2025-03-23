@@ -15,7 +15,7 @@ const Index = () => {
 
   return (
     <>
-      <header className="hidden sm:hidden md:hidden lg:block top-0 w-full bg-stone-50/80 backdrop-blur-sm z-40 py-3 px-6 mb-10 mx-auto">
+      <header className="mb-8 md:mb-12">
         <h1 className="text-center font-serif text-3xl md:text-4xl text-stone-800">
           Poe.try
           <span className="block text-sm md:text-base font-sans text-stone-500 mt-1">
@@ -23,7 +23,8 @@ const Index = () => {
           </span>
         </h1>
       </header>
-      <div className="min-h-screen min-w-screen flex items-center justify-center p-4 py-16">
+
+      <div className="min-h-screen min-w-screen flex items-center justify-center">
         {isLoading ? (
           <motion.div
             initial={{ opacity: 0 }}

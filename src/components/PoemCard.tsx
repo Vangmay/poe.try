@@ -55,18 +55,18 @@ const PoemCard: React.FC<PoemProps> = ({ poem }) => {
   }, [] as string[][]);
 
   return (
-    <div className="w-full">
+    <div className="w-full flex justify-center items-center px-4 py-4 md:py-6 lg:py-8">
       <AnimatePresence>
         {isVisible && (
           <motion.div
-            className="relative w-full max-w-2xl mx-auto min-h-[50vh] flex flex-col justify-center px-4 py-6"
+            className="relative w-full max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto max-h-[90vh] flex flex-col justify-start"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
             <motion.div
-              className="w-full rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] overflow-hidden backdrop-blur-md bg-white/60 border border-stone-100 relative"
+              className="w-full rounded-2xl shadow-lg overflow-hidden backdrop-blur-md bg-white/90 border border-stone-200 relative max-h-[90vh] flex flex-col"
               initial={{ scale: 0.95 }}
               animate={{ scale: 1 }}
               transition={{
@@ -91,9 +91,9 @@ const PoemCard: React.FC<PoemProps> = ({ poem }) => {
                 transition={{ duration: 0.3, delay: 0.3 }}
                 className="sticky top-0 z-10 p-6 pb-4 bg-white/80 backdrop-blur-md border-b border-stone-100"
               >
-                <h1 className="text-sm sm:text-sm md:text-xl font-serif text-stone-800 mb-2 tracking-tight">
+                <p className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-serif text-stone-800 mb-2 tracking-tight">
                   {poem.title}
-                </h1>
+                </p>
                 <p className="text-sm text-stone-600">
                   by <span className="italic">{poem.author}</span>
                 </p>
@@ -118,7 +118,8 @@ const PoemCard: React.FC<PoemProps> = ({ poem }) => {
 
               <div
                 ref={contentRef}
-                className="p-6 pt-0 max-h-[60vh] overflow-y-auto"
+                className="p-4 sm:p-6 lg:p-8 pt-2 overflow-y-auto flex-grow scrollbar-thin scrollbar-thumb-stone-300 scrollbar-track-transparent"
+                style={{ maxHeight: "calc(90vh - 110px)" }}
                 onScroll={handleScroll}
               >
                 <div className="space-y-6 my-8">
