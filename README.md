@@ -1,8 +1,14 @@
 # Poe.try
 
+## Why I made this app?
+
+1. I hate the reels format of consuming content with a burning passion. I don't like how it reduces our attention spans. I want to help get rid of it.
+2. If reels can make short-form content addictive, why not use the same design to make poetry or books engaging?
+3. I wanted to understand the [Infinite Scroll pattern](https://www.justinmind.com/blog/infinite-scroll-design-best-practices-and-examples/)
+
 ## About
 
-Poe.try is a minimalist poetry reading application designed to enhance your poetry consumption experience. The app provides a clean, distraction-free interface for reading poems with elegant typography and smooth animations.
+Poe.try is a minimalist poetry reading application designed to enhance your poetry consumption experience. The app provides a clean, distraction-free interface for reading poems with elegant typography and smooth animations. The design of the app was inspired by apps like tiktok and instagram reels which recently gave rise to the issue of "doomscrolling", which I wish never existed.
 
 ## Features
 
