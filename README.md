@@ -79,4 +79,4 @@ This project is licensed under the MIT License.
 
 - Inspired by the need for distraction-free poetry reading
 - Thanks to the authors of the poems that make this app worthwhile
-- [Poetrydb](https://poetrydb.org) : For suppling the poems
+- [Poetrydb](https://poetrydb.org) : For supplying the poems
